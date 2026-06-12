@@ -31,8 +31,8 @@ The answer to the last question turned out to be the interesting part (see below
 > All figures are produced by running the script. The numbers below come from the
 > 2026-06-11 export and will shift slightly with a newer export.
 
-**1. LAPD is the single largest source of requests** — roughly **23,500 requests
-(~37% of the entire portal)**, more than the Fire Department and City Clerk
+**1. LAPD is the single largest source of requests** — roughly **23,000 requests
+(~36% of the entire portal)**, more than the Fire Department and City Clerk
 combined. It is also slower than average (median ~9 days vs ~7 elsewhere, with a
 much heavier tail).
 
@@ -135,9 +135,13 @@ All derivations happen once, right after the CSV is loaded:
 
 - **Department.** The export has no department column, so each request's department
   is taken from the prefix of its **Closure Reason** (e.g. `PD:`, `LAFD`, `Clerk`,
-  `CUPA`, `LASAN`). Everything police-related — the `PD`, `LAPD`, and `1421`
-  (SB 1421) closure prefixes, plus any request whose **Point of Contact** is an
-  `LAPD …` analyst — is consolidated into a single **`LAPD`** category.
+  `CUPA`, `LASAN`). Requests are consolidated into a single **`LAPD`** category when
+  they carry a `PD`, `LAPD`, or `1421` (SB 1421) closure prefix, **or** are handled by
+  an `LAPD …` analyst *and* closed under a code that confirms a police disposition.
+  (An analyst assignment alone isn't counted — that excludes requests merely routed to
+  an LAPD analyst but closed under a generic code, and keeps the count aligned with the
+  portal's own LAPD filter. It also correctly retains `LAFD – PD 911 …` codes, which are
+  police 911 records despite the `LAFD`-prefixed token.)
 
 - **Closure outcome (LAPD).** Closure reasons are bucketed with a priority-ordered
   keyword classifier into *Records released, No records, Denied/Exempt, Withdrawn,
@@ -149,6 +153,27 @@ All derivations happen once, right after the CSV is loaded:
   reached that year. The gap is the portion of the ID sequence that never appears
   publicly.
 
+  ---
+  
+  ## Validation
+
+The `LAPD` category is a derived field, so it was checked against ground truth: the
+portal's own LAPD department filter returns **23,104** requests, and the rule used here
+yields **23,040** — a match to within ~0.3%. (The small residual is still-open requests,
+which have no closure code to confirm a disposition.)
+
+Two things are worth knowing if you try to reproduce that check:
+
+- **The CSV export ignores the on-screen department filter.** Filtering the portal to
+  "Police Department (LAPD)" and clicking *export* still downloads the **entire**
+  all-department list — the filtered and unfiltered exports come out byte-for-byte
+  identical. The only per-department ground-truth signal the portal gives you is the
+  **result count** shown in the browser, not a filtered file.
+- **The public LAPD count is effectively frozen.** Because LAPD stopped publishing new
+  requests to the portal around April 2025 (see finding 3), the LAPD-filtered count no
+  longer grows day to day — a count read today reflects the same set as an export pulled
+  a few days earlier.
+
 ---
 
 ## Caveats & limitations
@@ -156,7 +181,7 @@ All derivations happen once, right after the CSV is loaded:
 This is an exploratory analysis of a public export, not an audit. Please read these
 before drawing conclusions:
 
-- **Department is inferred, not given.** The closure-prefix mapping is a heuristic.
+- **Department is inferred, not given.** The closure-prefix mapping is a heuristic, though it matches the portal's own LAPD count to within ~0.3% (see *Validation*).
 - **The export only contains publicly-visible requests.** The "withheld" figures are
   therefore an **inference**, not a direct measurement — by definition, the requests
   being inferred are the ones not in the file.
