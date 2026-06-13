@@ -15,7 +15,7 @@ export and reproduces four figures.
 The City of Los Angeles runs a public records portal on NextRequest
 (now at <https://recordsrequest.lacity.org/>, formerly `lacity.nextrequest.com`).
 Anyone can browse and export the publicly-posted requests by clicking the 'Run Report' button on the top right of the portal. This project works from
-a full **"All Open + Closed"** export — **63,961 requests** spanning 2017–2026 —
+a full **"All Open + Closed"** export (**63,961 requests** spanning 2017–2026)
 and asks some basic questions:
 
 - How long do requests take from creation to closure, and how are they closed?
@@ -31,14 +31,13 @@ The answer to the last question turned out to be the interesting part (see below
 > All figures are produced by running the script. The numbers below come from the
 > 2026-06-11 export and will shift slightly with a newer export.
 
-**1. LAPD is the single largest source of requests** — roughly **23,000 requests
+**1. LAPD is the single largest source of requests** The dept receives roughly **23,000 requests
 (~36% of the entire portal)**, more than the Fire Department and City Clerk
 combined. It is also slower than average (median ~9 days vs ~7 elsewhere, with a
 much heavier tail).
 
 **2. The "Closed – Other" black hole.** Among the LAPD requests that *are* posted
-publicly, the share closed with the contentless code **"PD: Closed – Other"** —
-which records no disposition at all — grew from **~12% (2018) to ~93% (2024)**.
+publicly, the share closed with the contentless code **"PD: Closed – Other"** (which records no disposition at all) grew from **~12% (2018) to ~93% (2024)**.
 Over the same period, closures that tell you something collapsed: explicit
 **"records released"** fell from ~23% to ~0.2%, and even explicit
 **denials/exemptions** fell from ~38% to ~2.5%.
