@@ -14,7 +14,7 @@ export and reproduces four figures.
 
 The City of Los Angeles runs a public records portal on NextRequest
 (now at <https://recordsrequest.lacity.org/>, formerly `lacity.nextrequest.com`).
-Anyone can browse and export the publicly-posted requests. This project works from
+Anyone can browse and export the publicly-posted requests by clicking the 'Run Report' button on the top right of the portal. This project works from
 a full **"All Open + Closed"** export — **63,961 requests** spanning 2017–2026 —
 and asks some basic questions:
 
