@@ -31,13 +31,19 @@ dat <- raw %>%
     idyr  = 2000L + as.integer(sub("-.*$", "", id)),
     idnum = as.integer(sub("^[^-]+-", "", id)),
 
-    # Department from the closure-reason prefix, then consolidate everything
-    # police-related (PD / LAPD / 1421 prefixes, or an LAPD-labelled analyst) into "LAPD"
+    # Department from the closure-reason prefix, then consolidate police-related
+    # requests into "LAPD". An LAPD analyst alone is NOT enough: the closure code
+    # must also confirm a police disposition. This matches the portal's own LAPD
+    # filter count to within ~0.3%, and still keeps "LAFD - PD 911 ..." codes,
+    # which are police 911 records despite the LAFD-prefixed token.
     dept_raw = if_else(is.na(closure), "Unknown",
                        toupper(str_extract(str_remove(closure, "^[*\\s]+"), "^[A-Za-z0-9]+"))),
-    poc_lapd = if_else(is.na(poc), FALSE,
-                       str_detect(poc, regex("LAPD", ignore_case = TRUE))),
-    dept = if_else(poc_lapd | dept_raw %in% c("PD", "LAPD", "1421"), "LAPD", dept_raw),
+    poc_lapd     = if_else(is.na(poc), FALSE,
+                           str_detect(poc, regex("LAPD", ignore_case = TRUE))),
+    police_close = if_else(is.na(closure), FALSE,
+                           str_detect(closure, regex("LAPD|\\bPD\\b", ignore_case = TRUE))),
+    dept = if_else(dept_raw %in% c("PD", "LAPD", "1421") | (poc_lapd & police_close),
+                   "LAPD", dept_raw),
 
     # LAPD closure-outcome bucket (priority order: first match wins)
     cl = str_to_lower(closure),
