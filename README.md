@@ -176,6 +176,33 @@ Two things are worth knowing if you try to reproduce that check:
   longer grows day to day — a count read today reflects the same set as an export pulled
   a few days earlier.
 
+### Independent corroboration: LAPD's May '26 report
+
+In May 2026 LAPD's Risk Management Legal Affairs Division reported its CPRA
+statistics to the Board of Police Commissioners. Its yearly "requests received"
+counts let us check the portal export against the department's own books:
+
+| Year | LAPD-reported received | Publicly posted (portal) | % public |
+|------|-----------------------:|-------------------------:|---------:|
+| 2020 | 3,656 | 3,210 | 88% |
+| 2021 | 3,508 | 3,095 | 88% |
+| 2022 | 3,732 | 3,346 | 90% |
+| 2023 | 4,207 | 3,895 | 93% |
+| 2024 | 5,554 | 4,500 | 81% |
+| **2025** | **8,123** | **1,192** | **15%** |
+
+Through 2023 the portal held ~88–93% of everything LAPD received (the ~10%
+shortfall matches the non-portal intake channels — phone, email, fax, mail — that
+the report names). In 2025 LAPD reports a **record 8,123 requests received**, of
+which only **1,192 (15%) appear in the public portal** — roughly **6,900 received
+but never publicly posted**. (Jan–Apr 2026: 3,282 received vs. 92 posted, ~3%.)
+This confirms the April-2025 drop in public visibility using LAPD's *own* figures,
+rather than our inference from the request-ID sequence.
+
+<img width="1260" height="840" alt="lapd_5_received_vs_posted" src="https://github.com/user-attachments/assets/5fb90400-0ceb-4c26-9f33-fea965f690c4" />
+
+> Source: LAPD Risk Management Legal Affairs Division, "California Public Records
+> Act Data," 21 May 2026 (report to the Board of Police Commissioners).
 ---
 
 ## Caveats & limitations
