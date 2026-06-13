@@ -236,4 +236,4 @@ All data originates from the City's public records portal.
 ---
 
 ## License
-Licensed under GPL-3.0 — see LICENSE
+Licensed under GPL-3.0 — see [LICENSE](README.md)
