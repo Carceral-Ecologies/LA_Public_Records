@@ -43,7 +43,9 @@ Over the same period, closures that tell you something collapsed: explicit
 **"records released"** fell from ~23% to ~0.2%, and even explicit
 **denials/exemptions** fell from ~38% to ~2.5%.
 
-![Where LAPD requests end up — outcome mix by year](lapd_2_outcome_mix_by_year.png)
+
+<img width="1260" height="910" alt="lapd_2_outcome_mix_by_year" src="https://github.com/user-attachments/assets/1ebedca9-8916-43ee-905d-dc81a6d08f82" />
+
 
 **3. Public posting of LAPD requests largely stopped in April 2025.** Monthly
 LAPD requests visible in the portal drop from ~250–460/month to single digits
@@ -56,7 +58,8 @@ request-ID counter, the share of each year's requests that appears publicly fall
 from a historical **~70% to ~40% (2025) and ~32% (2026)**, with the drop timed to
 April and specific to LAPD.
 
-![Public vs. withheld by year](lapd_4_public_vs_withheld.png)
+<img width="1330" height="840" alt="lapd_4_public_vs_withheld" src="https://github.com/user-attachments/assets/988297c2-ab8e-448f-ad57-612b567110ab" />
+
 
 The overall arc: the requests LAPD *did* publish became progressively
 uninformative, and then public posting itself largely stopped — two reductions in
