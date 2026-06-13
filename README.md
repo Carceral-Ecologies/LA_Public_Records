@@ -5,7 +5,7 @@ Los Angeles request portal, with a focus on the Los Angeles Police Department:
 how long requests take, how they're closed, and how the **public visibility** of
 LAPD requests has changed over time.
 
-The repo is a single, self-contained R script (`lapd_charts.R`) that reads one CSV
+The repo is a single, self-contained R script (`[lapd_charts.R](https://github.com/Carceral-Ecologies/LA_Public_Records/blob/main/lapd_charts.R)`) that reads one CSV
 export and reproduces four figures.
 
 ---
@@ -236,4 +236,4 @@ All data originates from the City's public records portal.
 ---
 
 ## License
-Licensed under GPL-3.0 — see [LICENSE](README.md)
+Licensed under GPL-3.0 — see [LICENSE]([README.md](https://github.com/Carceral-Ecologies/LA_Public_Records/blob/main/LICENSE))
