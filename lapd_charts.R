@@ -213,4 +213,55 @@ p4 <- ggplot(pw_long, aes(factor(year), val, fill = seg)) +
 print(p4)
 ggsave("lapd_4_public_vs_withheld.png", p4, width = 9.5, height = 6, dpi = 140, bg = "white")
 
+# ============================================================
+# 5. LAPD-reported "received" vs. publicly posted, by year
+#    Cross-check against LAPD Risk Management Legal Affairs Division,
+#    "California Public Records Act Data," 21 May 2026 (report to the
+#    Board of Police Commissioners). "received" counts are transcribed
+#    from that report; "posted" is what appears in the portal export.
+# ============================================================
+report_received <- data.frame(
+  year     = 2020:2025,
+  received = c(3656, 3508, 3732, 4207, 5554, 8123)
+)
+
+posted_by_year <- dat %>%
+  filter(dept == "LAPD") %>%
+  mutate(year = year(created)) %>%
+  count(year, name = "posted")
+
+cmp <- report_received %>%
+  left_join(posted_by_year, by = "year") %>%
+  mutate(posted     = coalesce(posted, 0L),
+         not_posted = pmax(received - posted, 0L),
+         pct_public = round(posted / received * 100))
+
+cmp_long <- bind_rows(
+  cmp %>% transmute(year, seg = "Publicly posted (portal export)",  val = posted),
+  cmp %>% transmute(year, seg = "Received but not publicly posted", val = not_posted)
+) %>%
+  mutate(seg = factor(seg, levels = c("Publicly posted (portal export)",
+                                      "Received but not publicly posted")))
+
+p5 <- ggplot(cmp_long, aes(factor(year), val, fill = seg)) +
+  geom_col(position = position_stack(reverse = TRUE), width = 0.7,
+           colour = "white", linewidth = 0.3) +
+  geom_text(data = cmp, aes(factor(year), received,
+                            label = paste0(comma(received), "\n", pct_public, "% public")),
+            inherit.aes = FALSE, vjust = -0.25, size = 2.9, colour = "grey20", lineheight = 0.9) +
+  scale_fill_manual(values = c("Publicly posted (portal export)"  = "#3f7e99",
+                               "Received but not publicly posted" = "#c9cdd6")) +
+  scale_y_continuous(labels = comma, expand = expansion(mult = c(0, .13))) +
+  labs(title    = "LAPD CPRA requests received vs. publicly posted, by year",
+       subtitle = "LAPD's counts (May 2026 report) vs. requests visible in the public portal",
+       x = "year", y = "CPRA requests",
+       caption  = paste0("Received: LAPD Risk Management Legal Affairs Division, \"CPRA Data,\" 21 May 2026.  ",
+                         "Posted: public portal export, 2026-06-11.")) +
+  theme_lapd +
+  theme(legend.position = "top", plot.caption = element_text(colour = "grey45", hjust = 0))
+
+print(p5)
+ggsave("lapd_5_received_vs_posted.png", p5, width = 9, height = 6, dpi = 140, bg = "white")
+
 #ya done!
+
