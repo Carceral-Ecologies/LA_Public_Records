@@ -178,7 +178,7 @@ Two things are worth knowing if you try to reproduce that check:
 
 ### Independent corroboration: LAPD's May '26 report
 
-In May 2026 LAPD's Risk Management Legal Affairs Division reported its CPRA
+In May 2026 LAPD's Risk Management Legal Affairs Division [reported](https://github.com/Carceral-Ecologies/LA_Public_Records/blob/main/BPC_26-154%20LAPD%20PRA.pdf) its CPRA
 statistics to the Board of Police Commissioners. Its yearly "requests received"
 counts let us check the portal export against the department's own books:
 
