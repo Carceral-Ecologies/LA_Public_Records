@@ -38,7 +38,7 @@ much heavier tail).
 
 **2. The "Closed – Other" black hole.** Among the LAPD requests that *are* posted
 publicly, the share closed with the contentless code **"PD: Closed – Other"** (which records no disposition at all) grew from **~12% (2018) to ~93% (2024)**.
-Over the same period, closures that tell you something collapsed: explicit
+Over the same period, closures that tell you transparency collapsed: explicit
 **"records released"** fell from ~23% to ~0.2%, and even explicit
 **denials/exemptions** fell from ~38% to ~2.5%.
 
