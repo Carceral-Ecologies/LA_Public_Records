@@ -49,10 +49,10 @@ Over the same period, closures that tell you transparency collapsed: explicit
 **3. Public posting of LAPD requests largely stopped in April 2025.** Monthly
 LAPD requests visible in the portal drop from ~250–460/month to single digits
 beginning April 2025, while every other department continues normally. LAPD
-remains a *participating department* on the portal — so this reflects requests no
+remains a *participating department* on the portal. These numbers reflect requests no
 longer being **published publicly**, not the department leaving. Requests appear
-to still flow into the portal behind its embargo/visibility setting; they're just
-no longer visible to the public. Measured against the portal's shared, sequential
+to still flow into the portal behind what might be an embargo/visibility setting. The
+public just can't see them. Measured against the portal's shared, sequential
 request-ID counter, the share of each year's requests that appears publicly falls
 from a historical **~70% to ~40% (2025) and ~32% (2026)**, with the drop timed to
 April and specific to LAPD.
@@ -73,7 +73,7 @@ the data yourself:
 
 1. Go to <https://recordsrequest.lacity.org/>.
 2. Export the full request list (the analysis used the **All Open + Closed**
-   export--you can check those boxes on the left).
+   export--you can check those boxes on the left sidebar where the filters are).
 3. Save the CSV. By default the script expects it at:
 
    ```
@@ -113,7 +113,7 @@ PNGs to the current working directory.
 
 > **Date-parsing note:** the portal timestamps are 12-hour with AM/PM, which needs
 > an English/C time locale. The script sets `Sys.setlocale("LC_TIME", "C")`. If
-> you're on Windows and dates come back as `NA`, change `"C"` to `"English"`.
+> you're on Windows (gasp) and dates come back as `NA`, change `"C"` to `"English"`.
 
 ---
 
@@ -161,19 +161,19 @@ All derivations happen once, right after the CSV is loaded:
 
 The `LAPD` category is a derived field, so it was checked against ground truth: the
 portal's own LAPD department filter returns **23,104** requests, and the rule used here
-yields **23,040** — a match to within ~0.3%. (The small residual is still-open requests,
+yields **23,040** — a match to within ~0.3%. (The small residual are likley still-open requests,
 which have no closure code to confirm a disposition.)
 
 Two things are worth knowing if you try to reproduce that check:
 
 - **The CSV export ignores the on-screen department filter.** Filtering the portal to
   "Police Department (LAPD)" and clicking *export* still downloads the **entire**
-  all-department list — the filtered and unfiltered exports come out byte-for-byte
-  identical. The only per-department ground-truth signal the portal gives you is the
+  all-department list — the filtered and unfiltered exports come out identical. The
+  only per-department ground-truth signal the portal gives you is the 
   **result count** shown in the browser, not a filtered file.
 - **The public LAPD count is effectively frozen.** Because LAPD stopped publishing new
   requests to the portal around April 2025 (see finding 3), the LAPD-filtered count no
-  longer grows day to day — a count read today reflects the same set as an export pulled
+  longer grows day to day. A count read today reflects the same set as an export pulled
   a few days earlier.
 
 ### Independent corroboration: LAPD's May '26 report
