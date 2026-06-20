@@ -212,12 +212,12 @@ before drawing conclusions:
 
 - **Department is inferred, not given.** The closure-prefix mapping is a heuristic, though it matches the portal's own LAPD count to within ~0.3% (see *Validation*).
 - **The export only contains publicly-visible requests.** The "withheld" figures are
-  therefore an **inference**, not a direct measurement — by definition, the requests
+  therefore an **inference**, not a direct measurement. By definition, the requests
   being inferred are the ones not in the file.
 - **The ID sequence always has gaps.** Historically ~30% of IDs never appear publicly
   (drafts, withdrawn requests, spam). The *finding* is that this gap roughly doubled
-  in 2025–26, that the jump is timed to April, and that it is specific to LAPD — not
-  that every missing ID is an LAPD request.
+  in 2025–26, that the jump is timed to April, and that it is specific to LAPD (but not
+  that *every* missing ID is an LAPD request).
 - **"Closed – Other" measures labeling, not outcomes.** A rising "Closed – Other"
   share means the public record stopped *describing* what happened; it cannot, on its
   own, distinguish "records stopped being released" from "records were delivered by
