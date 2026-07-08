@@ -1,5 +1,5 @@
 # ============================================================
-# Exoloring LAPD public-records requests 
+# Exploring LAPD public-records requests 
 # ============================================================
 
 ## ---- Packages ----------------------------------------------------------
@@ -170,7 +170,7 @@ ggsave("lapd_3_monthly_volume.png", p3, width = 8.5, height = 5, dpi = 140, bg =
 # ============================================================
 seg_other <- "Posted publicly (other depts)"
 seg_lapd  <- "Posted publicly (LAPD)"
-seg_wh    <- "Not in public portal\n(drafts/withdrawn/spam + withheld)"
+seg_wh    <- "Not in public portal"
 
 # For each filing year: published (LAPD vs other) and the portion of the ID
 # sequence that never appears publicly (max ID reached minus rows published).
@@ -201,9 +201,9 @@ p4 <- ggplot(pw_long, aes(factor(year), val, fill = seg)) +
   scale_fill_manual(values = setNames(c("#3f7e99", "#9b1c1c", "#cbd0d8"),
                                       c(seg_other, seg_lapd, seg_wh))) +
   scale_y_continuous(labels = comma, expand = expansion(mult = c(0, .12))) +
-  labs(title = "Public vs. withheld: share of requests that actually\nappear in the public portal, by year",
+  labs(title = "Public vs. withheld: share of LA City CPRA requests that appear in the public portal, by year",
        x = "year", y = "requests initiated in the portal (by ID)",
-       caption = paste0("Note: ~30% of IDs are always absent from public view (drafts, withdrawn, spam); ",
+       caption = paste0("Note: ~30% of IDs are always absent from public view; ",
                         "the jump in 2025-26 is timed to April and specific to LAPD.")) +
   theme_lapd +
   theme(axis.text.x      = element_text(angle = 45, hjust = 1),
@@ -264,4 +264,3 @@ print(p5)
 ggsave("lapd_5_received_vs_posted.png", p5, width = 9, height = 6, dpi = 140, bg = "white")
 
 #ya done!
-
