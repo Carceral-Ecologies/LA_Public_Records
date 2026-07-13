@@ -43,7 +43,8 @@ Over the same period, closures that tell you transparency collapsed: explicit
 **denials/exemptions** fell from ~38% to ~2.5%.
 
 
-<img width="1260" height="910" alt="lapd_2_outcome_mix_by_year" src="https://github.com/user-attachments/assets/1ebedca9-8916-43ee-905d-dc81a6d08f82" />
+<img width="1260" height="910" alt="lapd_2_outcome_mix_by_year" src="https://github.com/user-attachments/assets/c81a53f4-7a07-4360-a2b4-675d8d10f457" />
+
 
 
 **3. Public posting of LAPD requests largely stopped in April 2025.** Monthly
