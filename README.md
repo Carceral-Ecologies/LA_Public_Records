@@ -58,7 +58,7 @@ request-ID counter, the share of each year's requests that appears publicly fall
 from a historical **~70% to ~40% (2025) and ~32% (2026)**, with the drop timed to
 April and specific to LAPD.
 
-<img width="1330" height="840" alt="lapd_4_public_vs_withheld" src="https://github.com/user-attachments/assets/988297c2-ab8e-448f-ad57-612b567110ab" />
+<img width="1330" height="800" alt="lapd_4_public_vs_withheld" src="https://github.com/user-attachments/assets/87ba4a71-fd5d-4ba7-a736-bbadabaded7e" />
 
 
 The overall arc: the requests LAPD *did* publish became progressively
